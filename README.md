@@ -18,4 +18,9 @@ Run the following command to install the necessary npm packages:
 
 ```bash
 npm install
+```
+## 3. Run project
+
+```bash
 npm run dev
+```
