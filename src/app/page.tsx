@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import GalleryPage from "./gallery/page";
 
 
 export default function Home() {
-  return <Button>Hello World!</Button>;
+  return GalleryPage({});
 }

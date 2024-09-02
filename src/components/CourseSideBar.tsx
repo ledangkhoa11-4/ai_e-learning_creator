@@ -15,8 +15,8 @@ type Props = {
 
 const CourseSideBar = async ({ course, currentChapterId }: Props) => {
   return (
-    <div className="w-[400px] absolute top-1/2 -translate-y-1/2 p-6 rounded-r-3xl bg-secondary">
-      <h1 className="text-4xl font-bold">{course.name}</h1>
+    <div className="w-[400px] absolute p-6 rounded-r-3xl bg-secondary" style={{top: "60px"}}>
+      <h1 className="text-2xl font-bold">{course.name}</h1>
       {course.units.map((unit, unitIndex) => {
         return (
           <div key={unit.id} className="mt-4">
@@ -25,10 +25,10 @@ const CourseSideBar = async ({ course, currentChapterId }: Props) => {
               <Link
                 href={`/course/${course.id}/${unitIndex}/0`}
               >
-                 <h2 className="text-2xl font-bold">{unit.name}</h2>
+                 <h2 className="text-1xl font-bold">{unit.name}</h2>
               </Link>
             ) : (
-              <h2 className="text-2xl font-bold">{unit.name}</h2>
+              <h2 className="text-1xl font-bold">{unit.name}</h2>
             )}
             {unit.chapters.map((chapter, chapterIndex) => {
               return (

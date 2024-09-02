@@ -55,6 +55,7 @@ model Course{
   name          String
   image         String
   units         Unit[]
+  material       String?   @db.Text
 }
 
 model Unit{
@@ -73,6 +74,7 @@ model Chapter{
   youtubeSearchQuery String 
   videoId            String?
   summary            String?   @db.VarChar(3000)
+  content            String?   @db.Text
   unit Unit @relation(fields:[unitId], references:[id])
   questions Question[]
 

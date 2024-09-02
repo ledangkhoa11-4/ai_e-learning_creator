@@ -18,8 +18,8 @@ const GalleryCourseCard = async ({course}: Props) => {
     <>
     <div className='w-full h-full border rounded-lg border-secondary'>
         <div className='relative'>
-            <Link href={`/course/${course.id}/0/0`} className="relative block w-fit">
-                <Image src={course.image|| ""} className="object-cover max-h-[200px] rounded-t-lg"
+            <Link href={`/course/${course.id}/0/0`} className="relative block w-full">
+                <Image src={course.image|| ""} className="object-cover max-h-[200px] rounded-t-lg w-full"
                 width={300}
                 height={300}
                 alt="picture of the course"

@@ -22,6 +22,10 @@ const MainVideoSummary = ({ unit, unitIndex, chapter, chapterIndex }: Props) => 
         allowFullScreen
       />
       <div className="mt-4">
+        <h3 className="text-3xl font-semibold">Content</h3>
+        <p className="mt-2 text-secondary-foreground/80">{chapter.content}</p>
+      </div>
+      <div className="mt-4">
         <h3 className="text-3xl font-semibold">Summary</h3>
         <p className="mt-2 text-secondary-foreground/80">{chapter.summary}</p>
       </div>

@@ -27,6 +27,34 @@ export async function POST(req: Request, res: Response) {
         { status: 404 }
       );
     }
+    const unit = await prisma.unit.findUnique({
+      where: {
+        id: chapter.unitId,
+      },
+    });
+    if (!unit) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Unit not found",
+        },
+        { status: 404 }
+      );
+    }
+    const course = await prisma.course.findUnique({
+      where: {
+        id: unit.courseId,
+      },
+    });
+    if (!course) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Course not found",
+        },
+        { status: 404 }
+      );
+    }
     const videoId = await searchYoutube(chapter.youtubeSearchQuery);
     let transcript = await getTranscript(videoId);
     let maxLength = 500;
@@ -44,6 +72,12 @@ export async function POST(req: Request, res: Response) {
             chapter.name,
           { summary: "summary of the content of chapter" }
         );
+    const { content }: { content: string } = await strict_output(
+      "You are an AI capable of extracting content of a whole course content",
+      `Extracting content in 300 words or less related to the topic "${unit.name}" or "${chapter.name} from \n` + course.material,
+      { content: "content extracted from main content" }
+    );
+
     const questions = await getQuestionsFromTranscript(transcript, chapter.name);
     await prisma.question.createMany({
       data: questions.map((question) => {
@@ -64,6 +98,7 @@ export async function POST(req: Request, res: Response) {
       data: {
         videoId: videoId,
         summary: summary,
+        content: content,
       },
     });
     return NextResponse.json({ success: true });

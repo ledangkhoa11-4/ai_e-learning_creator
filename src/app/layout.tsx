@@ -9,7 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 const lexend = Lexend({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Learning Journey',
+  title: 'AI Course Generation',
   
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(
         lexend.className,'antialised min-h-screen pt-16'
-      )}>
+      )} style={{paddingTop: "4rem !important"}}>
         <Provider>
           
         
